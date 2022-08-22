@@ -27,6 +27,36 @@ class App extends React.Component {
     const items = response.data;
     this.setState({ items });
   }
+  //Add Delete
+
+  /** 
+   * create a way to delete our cats
+deleteCats = async (id) => {
+  try {
+    //create our route to server
+    let url =`${SERVER}/cats/${id}`;
+    //call the server and delete the cat, now it will be gone from our db
+    await axios.delete(url);
+    //then we should remove it from our local state.
+    let updatedCats = this.state.cats.filter(cat => cat._id !== id);
+    this.setState({
+      cats: updatedCats
+    });
+  } catch (error) {
+    console.log('we have an error: ', error.response.data);
+  }
+};
+*/
+deleteItems = async (id) => {
+  try {
+    //need url
+    
+  } catch (error) {
+    
+  }
+};
+
+
 
   async componentDidMount() {
     await this.getItems();

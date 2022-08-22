@@ -8,6 +8,7 @@ class Items extends Component {
   render() {
 
     return (
+      // https://react-bootstrap.github.io/components/accordion/
       <section>
         <h2>Items...</h2>
 
