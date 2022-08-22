@@ -5,7 +5,6 @@ import Table from 'react-bootstrap/Table';
 class Items extends Component {
 
   render() {
-    // console.log(this.deleteItems)
     console.log('this is the function ', this.props.deleteItems);
     return (
       // https://react-bootstrap.github.io/components/accordion/
@@ -27,7 +26,6 @@ class Items extends Component {
                 key={item._id} 
                 itemData={item}
                 deleteItems={this.props.deleteItems}
-                //add props for delete here
                  />
               )
             }

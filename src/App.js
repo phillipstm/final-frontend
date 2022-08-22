@@ -25,29 +25,8 @@ class App extends React.Component {
     const items = response.data;
     this.setState({ items });
   }
-  //Add Delete
-
-  /** 
-   * create a way to delete our cats
-deleteCats = async (id) => {
-  try {
-    //create our route to server
-    let url =`${SERVER}/cats/${id}`;
-    //call the server and delete the cat, now it will be gone from our db
-    await axios.delete(url);
-    //then we should remove it from our local state.
-    let updatedCats = this.state.cats.filter(cat => cat._id !== id);
-    this.setState({
-      cats: updatedCats
-    });
-  } catch (error) {
-    console.log('we have an error: ', error.response.data);
-  }
-};
-*/
 deleteItems = async (id) => {
   try {
-    //need url
     let url =`${API_SERVER}/items/${id}`;
     await axios.delete(url);
     let updatedItems = this.state.items.filter(item => item._id !== id);
@@ -56,8 +35,6 @@ deleteItems = async (id) => {
     console.log('OMG we have an error', error.response.data);
   };
 };
-
-
 
   async componentDidMount() {
     await this.getItems();
@@ -80,7 +57,6 @@ deleteItems = async (id) => {
             <Col>
               <Items 
               itemsList={this.state.items} 
-              //add the props to ITEMs so it can props to ITEM
               deleteItems={this.deleteItems}
               />
             </Col>
