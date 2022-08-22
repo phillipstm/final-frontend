@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Card, Form, Button } from 'react-bootstrap';
 
 class AddNewItem extends React.Component {

@@ -1,12 +1,12 @@
 import { Component } from 'react';
-
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
 class Items extends Component {
 
   render() {
-
+    // console.log(this.deleteItems)
+    console.log('this is the function ', this.props.deleteItems);
     return (
       // https://react-bootstrap.github.io/components/accordion/
       <section>
@@ -23,7 +23,12 @@ class Items extends Component {
           <tbody>
             {
               this.props.itemsList.map((item, idx) =>
-                <Item key={item._id} itemData={item} />
+                <Item 
+                key={item._id} 
+                itemData={item}
+                deleteItems={this.props.deleteItems}
+                //add props for delete here
+                 />
               )
             }
           </tbody>
@@ -34,6 +39,32 @@ class Items extends Component {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Item extends Component {
 
@@ -46,7 +77,13 @@ class Item extends Component {
         <td>{itemData.name}</td>
         <td>{itemData.description}</td>
         <td>
-          <Button data-testid={`delete-button-${itemData.name}`}>Delete Item</Button>
+
+          {/* need function call as props from Items class above  */}
+          <Button 
+          data-testid={`delete-button-${itemData.name}`}
+          onClick={() => this.props.deleteItems(this.props.itemData._id)}
+          // add here onclick
+          >Delete Item</Button>
         </td>
       </tr>
     );

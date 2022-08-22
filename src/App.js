@@ -1,7 +1,5 @@
 import React from 'react';
-
 import axios from 'axios';
-
 import { Navbar, Container, Row, Col } from 'react-bootstrap';
 import Form from './components/AddItem.js';
 import Items from './components/Items.js';
@@ -50,10 +48,13 @@ deleteCats = async (id) => {
 deleteItems = async (id) => {
   try {
     //need url
-    
+    let url =`${API_SERVER}/items/${id}`;
+    await axios.delete(url);
+    let updatedItems = this.state.items.filter(item => item._id !== id);
+    this.setState({items: updatedItems});
   } catch (error) {
-    
-  }
+    console.log('OMG we have an error', error.response.data);
+  };
 };
 
 
@@ -77,7 +78,11 @@ deleteItems = async (id) => {
               <Form handleAddItem={this.addItem} />
             </Col>
             <Col>
-              <Items itemsList={this.state.items} />
+              <Items 
+              itemsList={this.state.items} 
+              //add the props to ITEMs so it can props to ITEM
+              deleteItems={this.deleteItems}
+              />
             </Col>
           </Row>
         </Container>
